@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Speech Recognition</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <button id="startRecording">Start Recording</button>
+  <button id="stopRecording">Cancel Recording</button>
+  <h4>Recording: <span id="isr">No</span></h4>
+  <p id="response">Response will be displayed here</p>
+
+  <script>
+    function dostuff(txt) {
+      var prompt = "You are a computer science professor. What would you respond if someone said \"" + txt + "\"?"
+      fetch('https://gpt4free.fairies0feast.repl.co/chat?query=' + btoa(prompt))
+        .then(response => response.text())
+        .then(textString => {
+          document.getElementById('response').value = textString
+        });
+    }
+    const startBtn = document.getElementById('startRecording');
+    const stopBtn = document.getElementById('stopRecording');
+    let recognition = new window.webkitSpeechRecognition(); // Initialize speech recognition
+    recognition.continuous = true; // Continuously listen for speech
+
+    startBtn.addEventListener('click', function () {
+      document.getElementById("isr").innerHTML = "Yes"
+      recognition.start(); // Start speech recognition
+      console.log('Speech recognition started.');
+    });
+
+    stopBtn.addEventListener('click', function () {
+      document.getElementById("isr").innerHTML = "No"
+      recognition.stop(); // Stop speech recognition
+      console.log('Speech recognition stopped.');
+    });
+
+    recognition.onresult = function (event) {
+      const transcript = event.results[event.results.length - 1][0].transcript;
+      dostuff(transcript) // Log the recognized speech
+    };
+
+    recognition.onerror = function (event) {
+      console.error('Speech recognition error occurred: ' + event.error);
+    };
+  </script>
+</body>
+
+</html>
