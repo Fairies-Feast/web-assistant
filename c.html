@@ -17,16 +17,31 @@
   <button onclick="window.location.replace('checkers.html')">Checkers</button>
 
   <script>
+    function speech(x) {
+      console.log(x) // Speak 'x'
+    }
+    function getCurrentTime() {
+  const now = new Date();
+  let hours = now.getHours();
+  let minutes = now.getMinutes();
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+
+  hours = hours % 12;
+  hours = hours ? hours : 12; // Handle midnight (0 hours)
+
+  minutes = minutes < 10 ? '0' + minutes : minutes; // Add leading zero if minutes < 10
+
+  const currentTime = hours + ':' + minutes + ' ' + ampm;
+  return currentTime;
+}
     function dostuff(txt) {
       if (!txt.startsWith("pineapple")) {
         return null;
       }
       var prompt = "You are a smart virtual assistant. What would you respond if someone said \"" + txt + "\"?"
-      fetch('https://gpt4free.fairies0feast.repl.co/chat?query=' + btoa(prompt))
-        .then(response => response.text())
-        .then(textString => {
-          document.getElementById('response').value = textString
-        });
+      if (txt.includes('time')) {
+        speech("The current time is " + getCurrentTime())
+      }
     }
     const startBtn = document.getElementById('startRecording');
     const stopBtn = document.getElementById('stopRecording');
