@@ -71,6 +71,8 @@
     recognition.onresult = function (event) {
       const transcript = event.results[event.results.length - 1][0].transcript;
       dostuff(transcript) // Log the recognized speech
+      recognition.stop()
+      recognition.start()
     };
 
     recognition.onerror = function (event) {
