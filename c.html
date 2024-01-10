@@ -46,12 +46,8 @@
   return currentTime;
 }
     function dostuff(txt) {
-      if (!txt.startsWith("pineapple")) {
-        return null;
-      }
-      console.log("Someone said::::" + txt)
       var prompt = "You are a smart virtual assistant. What would you respond if someone said \"" + txt + "\"?"
-      if (txt.includes('time')) {
+      if (txt == 'pineapple what time is it') {
         speech("The current time is " + getCurrentTime())
       }
     }
