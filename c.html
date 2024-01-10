@@ -19,9 +19,9 @@
   <script>
     function speech(x) {
       const synthesis = window.speechSynthesis;
-      if (v !== '') {
+      if (x !== '') {
         console.log("Replied:"+x)
-        const utterance = new SpeechSynthesisUtterance(v);
+        const utterance = new SpeechSynthesisUtterance(x);
         // Optionally, you can configure the speech synthesis parameters
         utterance.rate = 1; // Speech rate (default is 1)
         utterance.pitch = 1; // Speech pitch (default is 1)
@@ -49,6 +49,7 @@
       if (!txt.startsWith("pineapple")) {
         return null;
       }
+      console.log("Someone said::::" + txt)
       var prompt = "You are a smart virtual assistant. What would you respond if someone said \"" + txt + "\"?"
       if (txt.includes('time')) {
         speech("The current time is " + getCurrentTime())
