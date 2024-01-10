@@ -18,8 +18,19 @@
 
   <script>
     function speech(x) {
-      console.log(x) // Speak 'x'
-    }
+      const synthesis = window.speechSynthesis;
+      if (v !== '') {
+        console.log("Replied:"+x)
+        const utterance = new SpeechSynthesisUtterance(v);
+        // Optionally, you can configure the speech synthesis parameters
+        utterance.rate = 1; // Speech rate (default is 1)
+        utterance.pitch = 1; // Speech pitch (default is 1)
+        // Speak the text
+        synthesis.speak(utterance);
+      } else {
+        console.log("Speech not heard")
+      }
+  }
     function getCurrentTime() {
   const now = new Date();
   let hours = now.getHours();
