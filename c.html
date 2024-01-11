@@ -8,7 +8,9 @@
 </head>
 
 <body>
-  <h1>Homescreen</h1>
+  <h3>Wake word: "pineapple"</h3>
+  <h2>Homescreen</h2>
+  <h1 id="time">An error occured. Contact the owners after thirty seconds</h1>
   <button id="startRecording">Start Recording</button>
   <button id="stopRecording">Cancel Recording</button>
   <h4>Recording: <span id="isr">No</span></h4>
@@ -17,6 +19,7 @@
   <button onclick="window.location.replace('checkers.html')">Checkers</button>
 
   <script>
+    setInterval(function(){document.getElementById('time').innerText=getCurrentTime()},5000)
     function speech(x) {
       const synthesis = window.speechSynthesis;
       if (x !== '') {
@@ -72,7 +75,7 @@
       const transcript = event.results[event.results.length - 1][0].transcript;
       dostuff(transcript) // Log the recognized speech
       recognition.stop()
-      setTimeout(function(){recognition.start()},1000)
+      setTimeout(function(){recognition.start()},50)
     };
 
     recognition.onerror = function (event) {
