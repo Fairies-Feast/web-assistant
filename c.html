@@ -12,7 +12,7 @@
   <h3 style="position:fixed;top:0;right:0;margin:0;">Homescreen</h3>
   <button onclick="window.location.replace('tictactoe.html')">Tic Tac Toe</button>
   <button onclick="window.location.replace('checkers.html')">Checkers</button>
-  <h1 id="time">Awaiting time...</h1>
+  <h1 id="time">Error! get dd or alex</h1>
   <h4>Recording: <span id="isr">No</span></h4>
   <p id="response">Response will be displayed here</p>
   <button id="startRecording" style="position:fixed;bottom:0;left:0;">Start Recording</button>
@@ -48,6 +48,7 @@
   const currentTime = hours + ':' + minutes + ' ' + ampm;
   return currentTime;
 }
+    document.getElementById('time').innerText=getCurrentTime()
     function dostuff(txt) {
       var prompt = "You are a smart virtual assistant. What would you respond if someone said \"" + txt + "\"?"
       if (txt == 'pineapple what time is it') {
