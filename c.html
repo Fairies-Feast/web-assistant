@@ -77,7 +77,7 @@
       dostuff(transcript) // Log the recognized speech
     };
     recognition.onend = function () {
-      recognition.start()
+      setTimeout(function(){recognition.start()},100)
     }
 
     recognition.onerror = function (event) {
