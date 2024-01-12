@@ -51,7 +51,10 @@
     document.getElementById('time').innerText=getCurrentTime()
     function dostuff(txt) {
       var prompt = "You are a smart virtual assistant. What would you respond if someone said \"" + txt + "\"?"
-      if (txt == 'pineapple what time is it') {
+      if (!txt.startsWith('pineapple')) {
+        return null;
+      }
+      if (txt.includes('time')) {
         speech("The current time is " + getCurrentTime())
       }
     }
