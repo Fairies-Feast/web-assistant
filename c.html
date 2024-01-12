@@ -58,7 +58,7 @@
     const startBtn = document.getElementById('startRecording');
     const stopBtn = document.getElementById('stopRecording');
     let recognition = new window.webkitSpeechRecognition(); // Initialize speech recognition
-    recognition.continuous = true; // Continuously listen for speech
+    recognition.continuous = false; // Continuously listen for speech
 
     startBtn.addEventListener('click', function () {
       document.getElementById("isr").innerHTML = "Yes"
